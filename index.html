@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>星星评分</title>
+  <link rel="stylesheet" href="./font/iconfont.css">
+  <style>
+    .iconfont{
+      font-size: 30px;
+    }
+    .iconfont.icon-xingxing1{
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <p class="box">
+      <i class="iconfont icon-xingxing" data-index="0"></i>
+      <i class="iconfont icon-xingxing" data-index="1"></i>
+      <i class="iconfont icon-xingxing" data-index="2"></i>
+      <i class="iconfont icon-xingxing" data-index="3"></i>
+      <i class="iconfont icon-xingxing" data-index="4"></i>
+      <span class="title"></span>
+  </p>
+
+  <script>
+  var stars = Array.from(document.querySelectorAll('.iconfont'));
+  var box = document.querySelector(".box");
+  var title = document.querySelector(".title");
+  var text = ["差评", "一般", "还行", "不错", "好评"]
+  box.onclick = function (e) {
+    if(e.target.tagName === "I"){
+      title.innerHTML = text[e.target.dataset.index];
+      stars.map((item, i) => {
+        item.classList.replace("icon-xingxing1", "icon-xingxing");
+        if(i <= +e.target.dataset.index){
+          return item.classList.replace("icon-xingxing", "icon-xingxing1");
+        }
+      })
+    }
+  }
+
+  </script>
+</body>
+</html>
